@@ -1,18 +1,15 @@
 <template>
-    <div id="testing">
+  <div id="testing">
+    <Form v-on:submit-item="submit" />
+    <ul>
+      <li v-for="(item, index) in data" v-bind:key="index">
+        <span>{{ item }}</span>
 
-        
-        <Form v-on:submit-item="submit" />
-        <ul>
-            <li v-for="(item, index) in data" v-bind:key="index">
-                <span>{{item}}</span>
-
-                <a href="#" v-on:click.prevent="deleteItem(index)" >Delete</a>
-                <a href="#" v-on:click.prevent="editItem(index)" >Edit</a>
-            </li>
-        </ul>
-
-    </div> 
+        <a href="#" v-on:click.prevent="deleteItem(index)">Delete</a>
+        <a href="#" v-on:click.prevent="editItem(index)">Edit</a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 
@@ -22,30 +19,30 @@ import Form from "./Form";
 export default {
   name: "List",
   components: {
-    Form
+    Form,
   },
-  data: function() {
+  data: function () {
     return {
-      data: []
+      data: [],
     };
   },
   methods: {
-    submit: function(name) {
-        this.data.push(name);
+    submit: function (name) {
+      this.data.push(name);
     },
-    edit: function() {
+    edit: function () {
       Vue.set(this.data, this.editIndex, this.name);
       this.name = "";
       this.editIndex = -1;
     },
-    deleteItem: function(index) {
+    deleteItem: function (index) {
       this.data.splice(index, 1);
     },
-    editItem: function(index) {
+    editItem: function (index) {
       this.editIndex = index;
       this.name = this.data[index];
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -58,9 +55,9 @@ export default {
   float: right;
   padding: 5px;
 }
-#testing ul{
-    max-width: 1300px;
-    list-style-type: none;
-    margin: 30px auto;
+#testing ul {
+  max-width: 1300px;
+  list-style-type: none;
+  margin: 30px auto;
 }
 </style>
