@@ -1,19 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <Test />
+    <img alt="Vue logo" src="./assets/logo.png">
+    
+    <List />
   </div>
 </template>
 
 <script>
-import Test from "./components/Test";
+
+import List from './components/List'
 
 export default {
-  name: "App",
+  
+  name: 'App',
   components: {
-    Test,
-  },
-};
+    
+    List,
+    
+  }
+}
 </script>
 
 <style>
